@@ -344,6 +344,10 @@
         <div class="chips" id="frameworks"></div>
       </div>
       <div class="skill-block">
+        <div class="skill-label">Databases</div>
+        <div class="chips" id="databases"></div>
+      </div>
+      <div class="skill-block">
         <div class="skill-label">Infrastructure &amp; Practice</div>
         <div class="chips" id="infra"></div>
       </div>
@@ -408,21 +412,23 @@
 <script>
   const langs = ['C','C++','Java','Python','C#','JavaScript','TypeScript','Dart','PHP'];
   const frameworks = ['Laravel','.NET Core','FastAPI','Django','Flask','Node.js','NestJS','React','Next.js','Angular','Flutter','React Native'];
-  const infra = ['Ubuntu','Nginx','Supervisor','WebSockets','REST APIs','Team Leadership'];
+  const databases = ['MySQL','PostgreSQL','MongoDB'];
+  const infra = ['Ubuntu','Nginx','Supervisor','WebSockets','REST APIs','Photoshop Scripting','Team Leadership'];
   const iconMap = {
     'C':'c','C++':'cplusplus','Java':'java','Python':'python','C#':'csharp',
     'JavaScript':'javascript','TypeScript':'typescript','Dart':'dart','PHP':'php',
     'Laravel':'laravel','.NET Core':'dotnet','FastAPI':'fastapi','Django':'django',
     'Flask':'flask','Node.js':'nodedotjs','NestJS':'nestjs','React':'react',
     'Next.js':'nextdotjs','Angular':'angular','Flutter':'flutter','React Native':'react',
-    'Ubuntu':'ubuntu','Nginx':'nginx',
+    'MySQL':'mysql','PostgreSQL':'postgresql','MongoDB':'mongodb',
+    'Ubuntu':'ubuntu','Nginx':'nginx','Photoshop Scripting':'adobephotoshop',
   };
   const fill = (id,arr)=>document.getElementById(id).innerHTML = arr.map(s=>{
     const slug = iconMap[s];
     const ico = slug ? `<img src="https://cdn.simpleicons.org/${slug}/d4f439" alt="" loading="lazy">` : '';
     return `<span class="chip">${ico}${s}</span>`;
   }).join('');
-  fill('langs',langs); fill('frameworks',frameworks); fill('infra',infra);
+  fill('langs',langs); fill('frameworks',frameworks); fill('databases',databases); fill('infra',infra);
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   const io = new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});

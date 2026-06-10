@@ -358,23 +358,38 @@
   /* ---------- projects ---------- */
   .projects{display:flex;flex-direction:column;gap:18px}
   .proj{
-    border:1px solid var(--line);border-radius:4px;padding:30px;background:var(--ink-2);
-    display:grid;grid-template-columns:auto 1fr;gap:28px;transition:.25s;position:relative;overflow:hidden;
+    border:1px solid var(--line-strong);
+    border-left:2px solid var(--signal);
+    border-radius:6px;padding:28px;background:var(--ink-2);
+    display:grid;grid-template-columns:88px 1fr;gap:24px;
+    transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;
   }
-  .proj::after{content:"";position:absolute;left:0;top:0;height:100%;width:3px;background:var(--signal);transform:scaleY(0);transform-origin:top;transition:transform .3s}
-  .proj:hover{border-color:var(--line-strong);transform:translateY(-3px)}
-  .proj:hover::after{transform:scaleY(1)}
-  .proj-idx{font-family:var(--mono);font-size:13px;color:var(--signal-dim);padding-top:5px}
+  .proj:hover{
+    border-color:rgba(212,244,57,.3);border-left-color:var(--signal);
+    transform:translateY(-3px);
+    box-shadow:0 16px 40px -12px rgba(0,0,0,.6);
+  }
+  .proj-left{display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:2px}
+  .proj-idx{font-family:var(--mono);font-size:13px;color:var(--signal);letter-spacing:.02em}
+  .proj-icon-box{
+    width:72px;height:72px;border:1px solid rgba(212,244,57,.2);border-radius:8px;
+    background:rgba(212,244,57,.04);color:var(--signal);
+    display:flex;align-items:center;justify-content:center;
+    transition:border-color .25s,background .25s,box-shadow .25s;
+  }
+  .proj-icon-box svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .proj:hover .proj-icon-box{
+    border-color:rgba(212,244,57,.4);background:rgba(212,244,57,.08);
+    box-shadow:0 0 18px rgba(212,244,57,.14);
+  }
   .proj h3{font-family:var(--display);font-size:23px;font-weight:600;margin-bottom:10px}
   .proj p{color:#cfccc2;max-width:680px}
   .proj .tech{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
   .proj .tech span{font-family:var(--mono);font-size:12px;padding:5px 11px;background:var(--ink-3);border-radius:2px;color:var(--muted)}
-  .proj.placeholder{border-style:dashed}
-  .proj.placeholder h3,.proj.placeholder p{color:var(--muted)}
   .proj-links{margin-top:14px;display:flex;gap:14px}
   .proj-links a{font-family:var(--mono);font-size:12px;color:var(--signal-dim);text-decoration:none;letter-spacing:.04em;transition:.18s}
   .proj-links a:hover{color:var(--signal)}
-  @media(max-width:680px){.proj{grid-template-columns:1fr;gap:14px}}
+  @media(max-width:680px){.proj{grid-template-columns:1fr;gap:14px}.proj-left{flex-direction:row;align-items:center;gap:14px}}
 
   /* ---------- contact ---------- */
   .contact-card{text-align:center;padding:30px 0 10px}
@@ -613,7 +628,12 @@
     <div class="projects">
 
       <article class="proj reveal">
-        <div class="proj-idx">/01</div>
+        <div class="proj-left">
+          <div class="proj-idx">/01</div>
+          <div class="proj-icon-box">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          </div>
+        </div>
         <div>
           <h3>LAN Print Bridge</h3>
           <p>A resilient printing system connecting a Laravel backend to physical printers on counter PCs. A C# client app on each counter listens over the LAN, with Laravel Reverb broadcasting print jobs over WebSockets. The whole system keeps working when the internet drops, as long as the local network is up — backed by a static-IP Ubuntu server running Nginx and Supervisor, and self-hosted fonts/CSS so PDF generation never waits on a CDN.</p>
@@ -622,7 +642,12 @@
       </article>
 
       <article class="proj reveal">
-        <div class="proj-idx">/02</div>
+        <div class="proj-left">
+          <div class="proj-idx">/02</div>
+          <div class="proj-icon-box">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+        </div>
         <div>
           <h3>Photoshop Batch-Export Automation</h3>
           <p>An automation pipeline for a fashion e-commerce workflow. Two ExtendScript batch-export scripts run inside Photoshop, paired with a FastAPI service that classifies product images using a YOLO machine-learning model — turning a tedious manual export process into a hands-off pipeline.</p>
@@ -631,32 +656,47 @@
       </article>
 
       <article class="proj reveal">
-        <div class="proj-idx">/03</div>
+        <div class="proj-left">
+          <div class="proj-idx">/03</div>
+          <div class="proj-icon-box">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+        </div>
         <div>
           <h3>Flutter Blog App</h3>
           <p>A full-featured blog platform targeting Android, iOS, and Web built with Flutter and Feature-First Clean Architecture. Supabase handles auth, database, and file storage; BLoC/Cubit manages state across all layers; Hive caches posts locally so the app remains fully readable without a network connection.</p>
           <div class="tech"><span>Flutter</span><span>Dart</span><span>Supabase</span><span>BLoC / Cubit</span><span>Hive</span><span>Clean Architecture</span></div>
-          
+          <!-- <div class="proj-links"><a href="https://github.com/Harshakundar/blog_app" target="_blank" rel="noopener">GitHub →</a></div> -->
         </div>
       </article>
 
       <article class="proj reveal">
-        <div class="proj-idx">/04</div>
+        <div class="proj-left">
+          <div class="proj-idx">/04</div>
+          <div class="proj-icon-box">
+            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+        </div>
         <div>
           <h3>Horizon — Banking Platform</h3>
           <p>A modern banking web application built with Next.js 14 and TypeScript. Delivers a financial dashboard with account management and transaction views, structured using file-based routing, a custom UI component library, and Tailwind CSS — demonstrating full-stack TypeScript architecture at the feature level.</p>
           <div class="tech"><span>Next.js 14</span><span>TypeScript</span><span>Tailwind CSS</span><span>React</span></div>
-          
+          <!-- <div class="proj-links"><a href="https://github.com/Harshakundar/banking-main" target="_blank" rel="noopener">GitHub →</a></div> -->
         </div>
       </article>
 
       <article class="proj reveal">
-        <div class="proj-idx">/05</div>
+        <div class="proj-left">
+          <div class="proj-idx">/05</div>
+          <div class="proj-icon-box">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+        </div>
         <div>
           <h3>Festival Card Generator</h3>
           <p>A Laravel web application for generating personalised festival greeting cards. PHP handles dynamic card composition on the server; Blade templates render the output; Vite compiles front-end assets. A clean example of server-driven content generation with a Laravel backend.</p>
           <div class="tech"><span>Laravel</span><span>PHP</span><span>Blade</span><span>Vite</span></div>
-          
+          <!-- <div class="proj-links"><a href="https://github.com/Harshakundar/festival-card-generator" target="_blank" rel="noopener">GitHub →</a></div> -->
         </div>
       </article>
 
@@ -713,10 +753,21 @@
   const io = new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const navAs = document.querySelectorAll('.nav-links a');
-  const sio = new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){navAs.forEach(a=>a.classList.remove('active'));const a=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);if(a)a.classList.add('active');}
-  }),{threshold:.3,rootMargin:'-60px 0px -40% 0px'});
-  document.querySelectorAll('section[id]').forEach(s=>sio.observe(s));
+  const navSections = [...document.querySelectorAll('section[id]')];
+  const syncNav = () => {
+    let current = '';
+    const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 50;
+    if (atBottom) {
+      current = navSections[navSections.length - 1].id;
+    } else {
+      for (const s of navSections) {
+        if (s.getBoundingClientRect().top <= 80) current = s.id;
+      }
+    }
+    navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
+  };
+  window.addEventListener('scroll', syncNav, {passive: true});
+  syncNav();
 
   const countObs = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{

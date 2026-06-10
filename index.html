@@ -166,6 +166,50 @@
   .btn-ghost{border:1px solid var(--line-strong);color:var(--bone)}
   .btn-ghost:hover{border-color:var(--signal);color:var(--signal)}
 
+  /* ---------- terminal hero ---------- */
+  .terminal{
+    background:#080a0d;border:1px solid var(--line-strong);border-radius:10px;
+    overflow:hidden;font-family:var(--mono);
+    box-shadow:0 24px 64px -20px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.04);
+    opacity:0;animation:rise .5s .2s forwards;
+  }
+  .term-bar{
+    background:#141519;padding:10px 16px;
+    display:flex;align-items:center;gap:7px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .term-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .term-title{font-size:12px;color:var(--muted);flex:1;text-align:center;letter-spacing:.04em}
+  .term-body{padding:18px 22px 20px;display:flex;flex-direction:column;font-size:13.5px;line-height:1.65}
+  .term-row{opacity:0;animation:rise .2s forwards}
+  .term-cmd-gap{margin-top:10px}
+  .term-row:nth-child(1){animation-delay:.8s}
+  .term-row:nth-child(2){animation-delay:1.0s}
+  .term-row:nth-child(3){animation-delay:1.15s}
+  .term-row:nth-child(4){animation-delay:1.35s}
+  .term-row:nth-child(5){animation-delay:1.5s}
+  .term-row:nth-child(6){animation-delay:1.7s}
+  .term-row:nth-child(7){animation-delay:1.85s}
+  .term-row:nth-child(8){animation-delay:2.0s}
+  .term-row:nth-child(9){animation-delay:2.15s}
+  .term-row:nth-child(10){animation-delay:2.35s}
+  .term-row:nth-child(11){animation-delay:2.5s}
+  .prompt{color:var(--signal);user-select:none}
+  .cmd{color:var(--bone)}
+  .term-out{color:var(--muted)}
+  .name-out{color:var(--bone)!important;font-size:15px;font-weight:500;letter-spacing:.01em}
+  .avail-out{color:var(--signal)!important;display:flex;align-items:center;gap:8px}
+  .avail-dot-sm{
+    width:7px;height:7px;border-radius:50%;background:var(--signal);
+    flex-shrink:0;display:inline-block;animation:pulse 2s infinite;
+  }
+  .term-cursor{
+    display:inline-block;width:8px;height:.85em;
+    background:var(--signal);vertical-align:text-bottom;
+    animation:blink 1.1s step-end infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
   /* ---------- section scaffolding ---------- */
   section{padding:80px 0;border-top:1px solid var(--line)}
   .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:48px}
@@ -191,6 +235,43 @@
   .exp ul{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:12px}
   .exp li{padding-left:24px;position:relative;color:#cfccc2}
   .exp li::before{content:"›";position:absolute;left:0;color:var(--signal);font-family:var(--mono)}
+
+  /* ---------- stat interactive ---------- */
+  .stat{position:relative;cursor:pointer;transition:transform .2s,border-color .2s}
+  .stat:hover{transform:translateX(-4px);border-left-color:rgba(212,244,57,.7)}
+  .stat-cloud{
+    position:absolute;right:calc(100% + 22px);top:50%;
+    transform:translateY(-50%) translateX(8px);
+    background:rgba(8,10,14,.97);border:1px solid rgba(212,244,57,.25);border-radius:8px;
+    padding:12px 14px;width:208px;z-index:20;pointer-events:none;
+    opacity:0;transition:opacity .22s,transform .22s;
+    box-shadow:0 8px 32px rgba(0,0,0,.65),0 0 24px rgba(212,244,57,.07);
+  }
+  .stat-cloud::after{
+    content:"";position:absolute;right:-5px;top:50%;
+    transform:translateY(-50%) rotate(45deg);
+    width:8px;height:8px;background:rgba(8,10,14,.97);
+    border-right:1px solid rgba(212,244,57,.25);border-top:1px solid rgba(212,244,57,.25);
+  }
+  .stat:hover .stat-cloud{opacity:1;transform:translateY(-50%) translateX(0)}
+  .cloud-label{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--signal-dim);margin-bottom:8px}
+  .cloud-chips{display:flex;flex-wrap:wrap;gap:5px}
+  .cloud-chip{
+    font-family:var(--mono);font-size:11px;padding:3px 7px;
+    border:1px solid var(--line-strong);border-radius:2px;
+    color:var(--muted);display:inline-flex;align-items:center;gap:4px;
+  }
+  .cloud-chip img{width:11px;height:11px;opacity:.55;filter:brightness(0) invert(1)}
+  @media(max-width:680px){
+    .stat-cloud{right:auto;left:0;top:auto;bottom:calc(100% + 12px);transform:translateY(6px);width:220px}
+    .stat:hover .stat-cloud{transform:translateY(0)}
+    .stat-cloud::after{right:auto;left:18px;top:auto;bottom:-5px;transform:rotate(135deg)}
+  }
+  @keyframes skillGlow{
+    0%,100%{box-shadow:none;background:transparent}
+    35%{box-shadow:0 0 0 2px rgba(212,244,57,.3),0 0 28px rgba(212,244,57,.1);background:rgba(212,244,57,.04)}
+  }
+  .skill-flash{animation:skillGlow 1.4s ease;border-radius:4px}
 
   /* ---------- skills ---------- */
   .skill-block+.skill-block{margin-top:34px}
@@ -257,10 +338,27 @@
   <div class="wrap">
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="tag">Full-Stack Engineer</div>
-        <h1>Harsha vardhan<br><em>builds</em> the<br>backend<em>.</em></h1>
-        <p class="role">Backend &amp; infrastructure-focused full-stack developer.</p>
-        <p class="lede">I design and ship resilient web systems — multi-service backends, realtime bridges, and the server infrastructure that keeps them fast, secure, and scalable.</p>
+        <div class="terminal">
+          <div class="term-bar">
+            <span class="term-dot" style="background:#ff5f57"></span>
+            <span class="term-dot" style="background:#febc2e"></span>
+            <span class="term-dot" style="background:#28c840"></span>
+            <span class="term-title">bash — harsha@dev:~</span>
+          </div>
+          <div class="term-body">
+            <div class="term-row"><span class="prompt">harsha@dev:~$</span> <span class="cmd">whoami</span></div>
+            <div class="term-row term-out name-out">Harsha Vardhan</div>
+            <div class="term-row term-cmd-gap"><span class="prompt">harsha@dev:~$</span> <span class="cmd">cat role.txt</span></div>
+            <div class="term-row term-out">Full-Stack Engineer · Backend &amp; Infrastructure</div>
+            <div class="term-row term-cmd-gap"><span class="prompt">harsha@dev:~$</span> <span class="cmd">cat about.txt</span></div>
+            <div class="term-row term-out">I design and ship resilient web systems —</div>
+            <div class="term-row term-out">multi-service backends, realtime bridges,</div>
+            <div class="term-row term-out">and server infrastructure that stays fast &amp; scalable.</div>
+            <div class="term-row term-cmd-gap"><span class="prompt">harsha@dev:~$</span> <span class="cmd">./availability.sh</span></div>
+            <div class="term-row term-out avail-out"><span class="avail-dot-sm"></span> Available for new opportunities</div>
+            <div class="term-row term-cmd-gap"><span class="prompt">harsha@dev:~$</span> <span class="term-cursor">█</span></div>
+          </div>
+        </div>
         <div class="cta">
           <a class="btn btn-primary" href="#work">View my work →</a>
           <a class="btn btn-ghost" href="#">Download resume ↓</a>
@@ -302,9 +400,46 @@
         <p>As a Team Lead, I spend my time architecting systems, making the calls on how services talk to each other, and mentoring the developers who build them. I'm comfortable across a wide stack, from PHP and C# to Python and TypeScript, and equally at home configuring an Ubuntu server as writing the app that runs on it.</p>
       </div>
       <div class="stats">
-        <div class="stat"><b>3+</b><span>Years experience</span></div>
-        <div class="stat"><b>9</b><span>Languages</span></div>
-        <div class="stat"><b>12</b><span>Frameworks</span></div>
+        <div class="stat" data-section="experience">
+          <b>3+</b><span>Years experience</span>
+        </div>
+        <div class="stat" data-section="skills" data-block="langs">
+          <b>9</b><span>Languages</span>
+          <div class="stat-cloud">
+            <div class="cloud-label">Languages</div>
+            <div class="cloud-chips">
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/c/d4f439" alt="">C</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/cplusplus/d4f439" alt="">C++</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/java/d4f439" alt="">Java</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/python/d4f439" alt="">Python</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/csharp/d4f439" alt="">C#</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/javascript/d4f439" alt="">JS</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/typescript/d4f439" alt="">TS</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/dart/d4f439" alt="">Dart</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/php/d4f439" alt="">PHP</span>
+            </div>
+          </div>
+        </div>
+        <div class="stat" data-section="skills" data-block="frameworks">
+          <b>12</b><span>Frameworks</span>
+          <div class="stat-cloud">
+            <div class="cloud-label">Frameworks</div>
+            <div class="cloud-chips">
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/laravel/d4f439" alt="">Laravel</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/dotnet/d4f439" alt="">.NET</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/fastapi/d4f439" alt="">FastAPI</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/django/d4f439" alt="">Django</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/flask/d4f439" alt="">Flask</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/nodedotjs/d4f439" alt="">Node.js</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/nestjs/d4f439" alt="">NestJS</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/react/d4f439" alt="">React</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/nextdotjs/d4f439" alt="">Next.js</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/angular/d4f439" alt="">Angular</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/flutter/d4f439" alt="">Flutter</span>
+              <span class="cloud-chip"><img src="https://cdn.simpleicons.org/react/d4f439" alt="">RN</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -335,11 +470,11 @@
   <div class="wrap">
     <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Toolkit</h2></div>
     <div class="reveal">
-      <div class="skill-block">
+      <div class="skill-block" data-skillblock="langs">
         <div class="skill-label">Languages</div>
         <div class="chips" id="langs"></div>
       </div>
-      <div class="skill-block">
+      <div class="skill-block" data-skillblock="frameworks">
         <div class="skill-label">Frameworks &amp; Runtimes</div>
         <div class="chips" id="frameworks"></div>
       </div>
@@ -438,6 +573,25 @@
     if(e.isIntersecting){navAs.forEach(a=>a.classList.remove('active'));const a=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);if(a)a.classList.add('active');}
   }),{threshold:.3,rootMargin:'-60px 0px -40% 0px'});
   document.querySelectorAll('section[id]').forEach(s=>sio.observe(s));
+
+  document.querySelectorAll('.stat[data-section]').forEach(stat=>{
+    stat.addEventListener('click',()=>{
+      const target = document.getElementById(stat.dataset.section);
+      if(!target) return;
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+      const blockKey = stat.dataset.block;
+      if(blockKey){
+        setTimeout(()=>{
+          const block = document.querySelector(`[data-skillblock="${blockKey}"]`);
+          if(!block) return;
+          block.classList.remove('skill-flash');
+          void block.offsetWidth;
+          block.classList.add('skill-flash');
+          setTimeout(()=>block.classList.remove('skill-flash'),1400);
+        },700);
+      }
+    });
+  });
 </script>
 </body>
 </html>

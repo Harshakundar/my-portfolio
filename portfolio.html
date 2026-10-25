@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsha Vardhan — Full-Stack Engineer</title>
+<meta name="description" content="Harsha Vardhan — Full-Stack Engineer specializing in resilient web systems, multi-service backends, realtime bridges, and server infrastructure.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--ac:#F26B4E}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Barlow",sans-serif;font-size:15px;color:#e9e7e4;background:#050505;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.script{font-family:"Dancing Script",cursive;font-weight:700}
+.dim{color:#8d8a86}
+.lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8d8a86}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:700px;overflow:hidden}
+.glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px 320px at 30% 40%,rgba(242,107,78,.10),transparent 70%)}
+.panel{position:absolute;top:0;right:0;bottom:0;width:41%;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 38%,#1c1c1c 0%,#000 75%);border-left:1px solid #1d1b1a}
+.panel img{position:absolute;left:0;bottom:0;width:100%;height:100%;object-fit:cover;object-position:50% 12%;filter:grayscale(1) contrast(1.1);-webkit-mask-image:linear-gradient(to right,transparent 0,#000 22%);mask-image:linear-gradient(to right,transparent 0,#000 22%);transform:scale(1.06);transition:transform .3s ease-out}
+.topbar{position:absolute;left:0;right:0;top:0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;z-index:10}
+.logo{font-size:26px;line-height:1}
+.nav{display:flex;gap:30px;position:absolute;left:34%;transform:translateX(-50%)}
+.nav a{font-size:13px;color:#cfccc8;padding:10px 0;transition:color .2s}
+.nav a:hover{color:var(--ac)}
+.socials{display:flex;gap:8px;align-items:center}
+.soc{width:30px;height:30px;border-radius:50%;border:1px solid #3a3836;display:inline-flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:600;color:#cfccc8;transition:all .2s;cursor:pointer}
+.soc:hover{border-color:var(--ac);color:var(--ac)}
+.hero-copy{position:relative;width:59%;min-height:700px;padding:150px 0 120px 6%;display:flex;flex-direction:column;justify-content:center;z-index:5;transition:transform .3s ease-out}
+.hero-copy h1{font-size:38px;line-height:1.15;font-weight:300;letter-spacing:-.01em}
+.hero-copy h1 strong{font-weight:600}
+.hero-copy p{margin-top:14px;max-width:400px;color:#cfccc8}
+.cta{display:flex;align-items:center;gap:22px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 24px;font-size:13.5px;font-weight:500;border-radius:3px;cursor:pointer;transition:transform .2s,color .2s}
+.btn.pr{background:var(--ac);color:#fff}
+.btn.pr:hover{transform:translateY(-2px)}
+.btn.gh{padding:0 4px}
+.btn.gh:hover{color:var(--ac)}
+.exp{margin-top:46px}
+.exp h2{font-size:14px;font-weight:600;margin-bottom:14px}
+.tiles{display:flex;gap:12px;flex-wrap:wrap}
+.tile{width:42px;height:42px;border-radius:8px;border:1px solid var(--tc);background:rgba(255,255,255,.02);display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.tile img{width:22px;height:22px;display:block}
+.tile:hover{transform:perspective(300px) rotateX(-18deg) rotateY(18deg) translateZ(8px);box-shadow:0 10px 24px -8px var(--tc)}
+.scrolltab{position:absolute;left:0;bottom:0;z-index:6;display:flex;align-items:center;gap:60px;padding:16px 6%;border:1px solid #2a2827;border-left:0;border-bottom:0;border-radius:0 12px 0 0;background:rgba(10,10,10,.9);font-size:13.5px}
+.chev{display:inline-block;animation:nudge 1.8s ease-in-out infinite}
+.badge-wrap{position:absolute;right:calc(41% - 52px);bottom:56px;width:104px;height:104px;z-index:8;display:flex;align-items:center;justify-content:center;background:#050505;border-radius:50%}
+.badge{position:absolute;inset:0;animation:spin 18s linear infinite}
+.badge-dot{width:40px;height:40px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff}
+.menu{display:none;position:absolute;inset:0;z-index:40;background:rgba(5,5,5,.97);flex-direction:column;justify-content:center;padding:0 10%}
+.menu.open{display:flex}
+.menu a{font-size:32px;font-weight:300;padding:6px 0;transition:color .2s,transform .2s}
+.menu a:hover{color:var(--ac);transform:translateX(10px)}
+.menu .soc{position:absolute;right:6%;top:23px}
+
+/* ---------- sections ---------- */
+main{max-width:1100px;margin:0 auto;padding:0 6%}
+.sec{display:grid;grid-template-columns:200px 1fr;gap:20px 40px;padding:70px 0;border-top:1px solid #1f1d1c}
+.sec.first{border-top:0;padding:100px 0 80px}
+.lead{font-size:19px;font-weight:300;line-height:1.5;color:#fff;margin-bottom:14px;max-width:560px}
+.stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:30px}
+.stats b{display:block;font-size:26px;font-weight:300;line-height:1.1}
+.stats span{font-size:12.5px}
+.job-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.job-top h3{font-size:20px;font-weight:500}
+.co{color:var(--ac);font-size:14px;margin-bottom:16px}
+.bul{display:grid;gap:8px;max-width:600px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:34px;padding:0 14px;border-radius:999px;font-size:13px;cursor:pointer;transition:all .2s;border:1px solid #2a2827;color:#a9a6a2}
+.chip.tab{border-color:#2f2d2b;color:#cfccc8}
+.chip.on{background:#e9e7e4;color:#050505;border-color:#e9e7e4}
+.chip.tab.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.sk-detail{max-width:560px;margin-top:22px}
+.sk-detail h3{font-size:18px;font-weight:500;color:var(--ac)}
+.tag{font-size:11.5px;padding:2px 10px;border:1px solid #2a2827;border-radius:999px;color:#a9a6a2}
+.row{padding:22px 0;border-top:1px solid #1f1d1c;display:grid;grid-template-columns:36px 1fr auto;gap:14px 20px;align-items:start;transition:padding .3s}
+.row:hover{padding-left:12px}
+.row:hover h3{color:var(--ac)}
+.row h3{font-size:17px;font-weight:500;margin-bottom:4px;transition:color .2s}
+.row p{font-size:14px;margin-bottom:10px;max-width:560px}
+.row .num{font-size:12.5px;padding-top:3px}
+.row .go{font-size:18px;padding:4px 8px;color:var(--ac)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.endline{border-top:1px solid #1f1d1c}
+.contact h2{font-size:34px;line-height:1.15;font-weight:300}
+.contact h2 strong{font-weight:600;color:var(--ac)}
+.contact p{margin:12px 0 24px;max-width:420px}
+.links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+footer{padding:50px 0 36px;font-size:12px}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes nudge{50%{transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.badge,.chev{animation:none}html{scroll-behavior:auto}}
+@media (max-width:860px){
+  .panel{position:relative;width:100%;height:420px}
+  .hero{display:flex;flex-direction:column}
+  .hero-copy{width:100%;min-height:0;padding:110px 6% 50px;order:-1}
+  .nav{display:none}
+  .badge-wrap{right:20px;bottom:auto;top:calc(100% - 110px)}
+  .scrolltab{display:none}
+  .sec{grid-template-columns:1fr}
+  .sec.first{padding-top:70px}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero" id="top">
+  <div class="glow" id="glow" aria-hidden="true"></div>
+
+  <div class="panel">
+    <img id="portrait" src="image.jpeg" alt="Harsha Vardhan, full-stack engineer">
+  </div>
+
+  <div class="topbar">
+    <a href="#top" class="logo script">Harsha Vardhan</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a><a href="#skills">Skills</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="socials">
+      <a class="soc" href="https://github.com/harshakundar" target="_blank" rel="noopener" aria-label="GitHub">Gh</a>
+      <a class="soc" href="https://www.linkedin.com/in/harsha-kunder-a182ba245/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a class="soc" href="mailto:kundarharsha@gmail.com" aria-label="Email">@</a>
+      <button type="button" class="soc" id="menu-open" aria-label="Open menu" style="margin-left:6px">☰</button>
+    </div>
+  </div>
+
+  <div class="hero-copy" id="copy">
+    <h1>Meet <strong>Harsha Vardhan</strong></h1>
+    <p>A full-stack engineer and Team Lead, building resilient backends, realtime bridges and server infrastructure — 3+ years and counting.</p>
+    <div class="cta">
+      <a class="btn pr" href="resume.pdf" download="Harsha-Vardhan-Resume.pdf">Download Resume <span aria-hidden="true">↓</span></a>
+      <a class="btn gh" href="#work">View Portfolio <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="exp">
+      <h2>Expertise in</h2>
+      <div class="tiles">
+        <span class="tile" style="--tc:#FF2D20" title="Laravel"><img src="icons/laravel.svg" alt="Laravel"></span>
+        <span class="tile" style="--tc:#4B8BBE" title="Python"><img src="icons/python.svg" alt="Python"></span>
+        <span class="tile" style="--tc:#7C5CFF" title=".NET / C#"><img src="icons/dotnet.svg" alt=".NET"></span>
+        <span class="tile" style="--tc:#ffffff" title="Next.js"><img src="icons/nextdotjs.svg" alt="Next.js"></span>
+        <span class="tile" style="--tc:#3FC8F4" title="Flutter"><img src="icons/flutter.svg" alt="Flutter"></span>
+        <span class="tile" style="--tc:#2FD27A" title="Nginx"><img src="icons/nginx.svg" alt="Nginx"></span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scrolltab"><span>Scroll down to know more</span><span class="chev" aria-hidden="true">⌄</span></a>
+
+  <a href="mailto:kundarharsha@gmail.com" class="badge-wrap" aria-label="Contact now">
+    <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+      <defs><path id="cp" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"></path></defs>
+      <text font-size="10.5" letter-spacing="3.2" fill="#e9e7e4" font-family="Barlow,sans-serif" font-weight="500"><textPath href="#cp">CONTACT NOW • CONTACT NOW • </textPath></text>
+    </svg>
+    <span class="badge-dot">↗</span>
+  </a>
+
+  <div class="menu" id="menu" role="dialog" aria-label="Menu">
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#work">Work</a><a href="#contact">Contact</a>
+    <button type="button" class="soc" id="menu-close" aria-label="Close menu">✕</button>
+  </div>
+</header>
+
+<main>
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about" class="sec first">
+    <div class="lbl">01 — About</div>
+    <div>
+      <p class="lead">I'm a full-stack developer who leans heavily toward the backend and infrastructure side of things — the layers most people never see but always depend on.</p>
+      <p class="dim" style="max-width:560px">As a Team Lead, I spend my time architecting systems, making the calls on how services talk to each other, and mentoring the developers who build them.</p>
+      <div class="stats">
+        <div><b>3+</b><span class="dim">Years experience</span></div>
+        <div><b>9</b><span class="dim">Languages</span></div>
+        <div><b>12</b><span class="dim">Frameworks &amp; runtimes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EXPERIENCE ==================== -->
+  <section id="experience" class="sec">
+    <div class="lbl">02 — Experience</div>
+    <div>
+      <div class="job-top"><h3>Team Lead</h3><span class="dim" style="font-size:13px">3+ years</span></div>
+      <div class="co">Codespectrum Technology</div>
+      <ul class="bul dim">
+        <li>— Lead a cross-functional team building scalable web and backend systems end to end.</li>
+        <li>— Own architectural decisions: service design, data flow, deployment, and server infrastructure.</li>
+        <li>— Design and maintain backend systems and APIs on Ubuntu/Nginx infrastructure.</li>
+        <li>— Mentor developers and set coding standards and review practices across the team.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section id="skills" class="sec">
+    <div class="lbl">03 — Skills</div>
+    <div>
+      <div class="chips" id="sk-tabs" role="tablist" aria-label="Technology categories" style="margin-bottom:16px"></div>
+      <div class="chips" id="sk-list"></div>
+      <div class="sk-detail" aria-live="polite">
+        <h3 id="sk-title"></h3>
+        <p class="dim" id="sk-desc"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WORK ==================== -->
+  <section id="work" class="sec">
+    <div class="lbl">04 — Work</div>
+    <div>
+      <div id="work-list"></div>
+      <div class="endline"></div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="sec contact">
+    <div class="lbl">05 — Contact</div>
+    <div>
+      <h2>Let's build <strong>something solid.</strong></h2>
+      <p class="dim">Available for new opportunities — backend, infrastructure and full-stack work.</p>
+      <div class="links">
+        <a class="btn pr" href="mailto:kundarharsha@gmail.com">Email me</a>
+        <a class="btn gh" href="https://github.com/harshakundar" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn gh" href="https://www.linkedin.com/in/harsha-kunder-a182ba245/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="dim">© 2026 Harsha — Designed, developed, and deployed by Harsha.</footer>
+</main>
+
+<script>
+(function () {
+  var CATS = [
+    { label: 'Languages', items: [
+      ['Python','Used for backend services, FastAPI microservices, YOLO machine-learning image classification, and automation scripting.'],
+      ['Java','Object-oriented programming for strongly typed backend services and application architecture.'],
+      ['C#','Powers Windows LAN counter listeners for physical printing bridges and .NET backend services.'],
+      ['TypeScript','Strictly typed full-stack development across Next.js 14, React, NestJS, and Angular applications.'],
+      ['JavaScript','Core scripting for interactive browser UIs, Node.js runtimes, and Adobe ExtendScript automation.'],
+      ['PHP','Server-side foundation for Laravel web applications, REST APIs, and dynamic Blade rendering.'],
+      ['Dart','Primary language for multi-platform Flutter applications built with Clean Architecture and BLoC.'],
+      ['C++','Performance-critical systems and object-oriented programming foundation.'],
+      ['C','Low-level systems programming and memory-aware execution.'] ] },
+    { label: 'Frameworks', items: [
+      ['Laravel','Primary PHP framework used to architect multi-service backends, Blade apps, and Laravel Reverb WebSocket broadcasting.'],
+      ['FastAPI','High-speed Python API framework used to serve YOLO machine-learning classification pipelines.'],
+      ['.NET Core','Cross-platform framework for C# backend services and desktop LAN bridge integrations.'],
+      ['Next.js','Full-stack React framework (Next.js 14) used to build the Horizon Banking Platform.'],
+      ['Flutter','Cross-platform UI toolkit targeting Android, iOS, and Web with BLoC state and Hive offline caching.'],
+      ['Node.js','Event-driven JavaScript runtime for scalable network and realtime backend services.'],
+      ['NestJS','Modular TypeScript-first Node.js framework for structured server architectures.'],
+      ['React','Component-based UI library for modern interactive dashboards and web frontends.'],
+      ['Django','Batteries-included Python web framework for structured data-driven backends.'],
+      ['Flask','Lightweight Python micro-framework for modular REST API services.'],
+      ['Angular','Structured TypeScript frontend framework for single-page web applications.'],
+      ['React Native','Cross-platform mobile development using React.'] ] },
+    { label: 'Databases', items: [
+      ['PostgreSQL','Relational database used with Supabase and scalable transactional backend services.'],
+      ['MySQL','Core relational database powering Laravel applications and multi-service web backends.'],
+      ['MongoDB','Document-oriented NoSQL database for flexible schema workloads.'] ] },
+    { label: 'Infrastructure', items: [
+      ['Ubuntu','Static-IP Linux server administration backing local network bridges and production deployments.'],
+      ['Nginx','High-performance reverse proxy and web server fronting Laravel, FastAPI, and WebSocket services.'],
+      ['Supervisor','Process control system keeping background workers and Laravel Reverb WebSocket servers alive.'],
+      ['WebSockets','Realtime bi-directional communication layer broadcasting print jobs across local networks.'],
+      ['REST APIs','Clean, predictable service contracts connecting web frontends, mobile clients, and microservices.'],
+      ['Photoshop Scripting','ExtendScript and pywin32 automation inside Adobe Photoshop for hands-off batch export pipelines.'],
+      ['Team Leadership','3+ years leading cross-functional developers, owning architecture decisions, and mentoring engineers.'] ] }
+  ];
+
+  var WORK = [
+    { title: 'LAN Print Bridge', href: null, tags: ['C#','Laravel','WebSockets','Nginx','Supervisor','Ubuntu'],
+      desc: 'A resilient printing system connecting a Laravel backend to physical printers on counter PCs. A C# client app on each counter listens over the LAN, with Laravel Reverb broadcasting print jobs over WebSockets on Ubuntu/Nginx infrastructure.' },
+    { title: 'Photoshop Batch-Export Automation', href: null, tags: ['Python','FastAPI','ExtendScript','YOLO / ML','pywin32'],
+      desc: 'An automation pipeline for a fashion e-commerce workflow. Two ExtendScript batch-export scripts run inside Photoshop, paired with a FastAPI service that classifies product images using a YOLO machine-learning model.' },
+    { title: 'Flutter Blog App', href: 'https://github.com/Harshakundar/blog_app', tags: ['Flutter','Dart','Supabase','BLoC / Cubit','Hive'],
+      desc: 'A full-featured blog platform targeting Android, iOS, and Web built with Flutter and Feature-First Clean Architecture. Uses Supabase for auth/storage, BLoC/Cubit for state, and Hive for offline caching.' },
+    { title: 'Horizon — Banking Platform', href: 'https://github.com/Harshakundar/banking-main', tags: ['Next.js 14','TypeScript','Tailwind CSS','React'],
+      desc: 'A modern banking web application built with Next.js 14 and TypeScript. Delivers a financial dashboard with account management and transaction views using file-based routing and Tailwind CSS.' },
+    { title: 'Festival Card Generator', href: 'https://github.com/Harshakundar/festival-card-generator', tags: ['Laravel','PHP','Blade','Vite'],
+      desc: 'A Laravel web application for generating personalised festival greeting cards. PHP handles dynamic card composition on the server; Blade templates render the output; Vite compiles front-end assets.' }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+
+  /* ---- skills ---- */
+  var cat = 0, sel = 0;
+  function renderSkills() {
+    var tabs = $('sk-tabs'), list = $('sk-list');
+    tabs.textContent = ''; list.textContent = '';
+    CATS.forEach(function (c, k) {
+      var b = el('button', 'chip tab' + (k === cat ? ' on' : ''), c.label);
+      b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', k === cat);
+      b.onclick = function () { cat = k; sel = 0; renderSkills(); };
+      tabs.appendChild(b);
+    });
+    CATS[cat].items.forEach(function (s, k) {
+      var b = el('button', 'chip' + (k === sel ? ' on' : ''), s[0]);
+      b.type = 'button';
+      b.onclick = function () { sel = k; renderSkills(); };
+      list.appendChild(b);
+    });
+    var cur = CATS[cat].items[sel];
+    $('sk-title').textContent = cur[0];
+    $('sk-desc').textContent = cur[1];
+  }
+  renderSkills();
+
+  /* ---- work ---- */
+  var wl = $('work-list');
+  WORK.forEach(function (w, i) {
+    var row = el('article', 'row');
+    row.appendChild(el('span', 'num dim', '0' + (i + 1)));
+    var body = el('div');
+    body.appendChild(el('h3', null, w.title));
+    body.appendChild(el('p', 'dim', w.desc));
+    var tags = el('div', 'tags');
+    w.tags.forEach(function (t) { tags.appendChild(el('span', 'tag', t)); });
+    body.appendChild(tags);
+    row.appendChild(body);
+    if (w.href) {
+      var a = el('a', 'go', '↗'); a.href = w.href; a.target = '_blank'; a.rel = 'noopener';
+      a.setAttribute('aria-label', w.title + ' repository');
+      row.appendChild(a);
+    } else { row.appendChild(el('span')); }
+    wl.appendChild(row);
+  });
+
+  /* ---- menu ---- */
+  var menu = $('menu');
+  $('menu-open').onclick = function () { menu.classList.add('open'); };
+  function closeMenu() { menu.classList.remove('open'); }
+  $('menu-close').onclick = closeMenu;
+  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  /* ---- hero parallax ---- */
+  var hero = document.querySelector('.hero');
+  var portrait = $('portrait'), copy = $('copy'), glow = $('glow');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setPos(mx, my) {
+    portrait.style.transform = 'translate3d(' + (-(mx - .5) * 20) + 'px,' + (-(my - .5) * 12) + 'px,0) scale(1.06)';
+    copy.style.transform = 'translate3d(' + ((mx - .5) * 8) + 'px,0,0)';
+    glow.style.background = 'radial-gradient(420px 320px at ' + (20 + mx * 40) + '% ' + (30 + my * 50) + '%,rgba(242,107,78,.10),transparent 70%)';
+  }
+  if (!reduce) {
+    hero.addEventListener('mousemove', function (e) {
+      var r = hero.getBoundingClientRect();
+      setPos((e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+    });
+    hero.addEventListener('mouseleave', function () { setPos(.3, .3); });
+    setPos(.3, .3);
+  }
+})();
+</script>
+</body>
+</html>
